@@ -114,5 +114,12 @@ class User extends Authenticatable
     public function likes($micropostId) {
         return $this->favorites()->where('micropost_id', $micropostId)->exists();
     }
+    
+    public function feed_favorites()
+    {
+        $like_micropost_ids = $this->favorites()-> pluck('microposts.id')->toArray();
+        $like_micropost_ids[] = $this->id;
+        return Micropost::whereIn('micropost_id', $like_micropost_ids);
+    }
 }
 
