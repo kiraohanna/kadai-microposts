@@ -29,8 +29,10 @@ class FavoriteController extends Controller
                 'user' => $user,
                 'favorites' => $favorites,
             ];
+            return view('favoritelist', $data);
         }
-        
-        return view('favoritelist', $data);
+        else {
+            print "This page cannot be displayed.";
+        }
     }
 }

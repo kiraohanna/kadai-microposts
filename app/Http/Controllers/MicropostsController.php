@@ -19,8 +19,11 @@ class MicropostsController extends Controller
                 'user'=>$user,
                 'microposts'=>$microposts,
             ];
+            return view('welcome', $data);
         }
-        return view('welcome', $data);
+        else {
+            print "This page cannot be displayed.";
+        }
     }
     
     public function store(Request $request)
